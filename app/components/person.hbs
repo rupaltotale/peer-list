@@ -1,15 +1,34 @@
 
-<div class="d-flex flex-row justify-content-between">
-    <p>
-        {{@person.name}}
-    </p>
+<div class="d-flex flex-row justify-content-between align-items-center">
+    
+        {{#if this.isEditting}}
+            {{input type="text" class="form-control w-50 " value=@person.name}}
+        {{else}}
+        <div class="mr-3">
+            {{@person.name}}
+        </div>
+        {{/if}}
     <div>
-        <button type="button" class="btn btn-primary">Edit</button>
-        <button type="button" class="btn btn-primary" 
-                onclick={{fn this.deletePerson @person}}>Delete</button>
-        {{!-- <button
-            @text="Click OK to delete your account."
-            @onConfirm={{this.deletePerson}}
-        /> --}}
+        {{#if this.isEditting}}
+            <button 
+                type="button" 
+                class="btn btn-primary" 
+                onclick={{fn this.updatePerson @person}}>
+                Done
+            </button>
+        {{else}}
+            <button 
+                type="button" 
+                class="btn btn-primary" 
+                onclick={{this.toggleEditting}}>
+                Edit
+            </button>
+        {{/if}}
+        <button 
+            type="button" 
+            class="btn btn-primary" 
+            onclick={{fn this.deletePerson @person}}>
+            Delete
+        </button>
     </div>
 </div>

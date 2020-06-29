@@ -1,7 +1,7 @@
     
 <div class="body">
     {{!-- List all peers --}}
-    <ul class="list-group">
+    <ul class="list-group ">
         {{#each @model as |person|}}
         <li class="list-group-item list-group-item-action">
             <Person @person={{person}}/>
@@ -10,9 +10,7 @@
     {{!-- Add new peer --}}
         <li class="list-group-item list-group-item-action">
             <div class="input-group">
-                {{!-- {{input type="text" class="form-control" placeholder="Add a peer" aria-label="Add a peer" aria-describedby="basic-addon2" 
-                    value=newBoardGame}} --}}
-                {{input ype="text" class="form-control" placeholder="Add a peer" value=newPeer}}
+                {{input type="text" class="form-control" placeholder="Add a peer" value=newPeer}}
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button"
                     onclick={{action "createPerson"}}
