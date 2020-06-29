@@ -5,4 +5,10 @@ export default class IndexRoute extends Route {
   async model() {
     return this.store.findAll("person");
   }
+  async update(person, name) {
+    this.store.findRecord("person", person.id).then(function (updatedPerson) {
+      // ...after the record has loaded
+      updatedPerson.name = name;
+    });
+  }
 }

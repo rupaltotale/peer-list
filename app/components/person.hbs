@@ -5,6 +5,11 @@
     </p>
     <div>
         <button type="button" class="btn btn-primary">Edit</button>
-        <button type="button" class="btn btn-primary">Delete</button>
+        <button type="button" class="btn btn-primary" 
+                onclick={{fn this.deletePerson @person}}>Delete</button>
+        {{!-- <button
+            @text="Click OK to delete your account."
+            @onConfirm={{this.deletePerson}}
+        /> --}}
     </div>
 </div>
