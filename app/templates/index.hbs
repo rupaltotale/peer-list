@@ -1,0 +1,11 @@
+
+<div class="rentals">
+    <ul class="results">
+        {{#each @model as |person|}}
+        <li>
+            {{!-- <Rental @rental={{rental}}/> --}}
+            {{person.name}}
+        </li>
+        {{/each}}
+    </ul>
+</div>

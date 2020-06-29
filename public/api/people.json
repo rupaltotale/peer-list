@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "type": "person",
+      "id": 1,
+      "attributes": {
+        "name": "Tin Hon Ng"
+      }
+    },
+    {
+      "type": "person",
+      "id": 2,
+      "attributes": {
+        "name": "Steven Pham"
+      }
+    },
+    {
+      "type": "person",
+      "id": 3,
+      "attributes": {
+        "name": "Dylan Harris"
+      }
+    }
+  ]
+}
