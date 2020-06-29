@@ -14,7 +14,7 @@
                 type="button" 
                 class="btn btn-success" 
                 onclick={{fn this.updatePerson @person}}
-                disabled={{if @person.name false true}}
+                disabled={{if this.newName false true}}
                 >
                 <FaIcon @icon="check" />
             </button>
