@@ -12,8 +12,11 @@
             <div class="input-group">
                 {{input type="text" class="form-control" placeholder="Add a peer" value=newPeer}}
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button"
+                    <button 
+                    class="btn btn-outline-secondary" 
+                    type="button"
                     onclick={{action "createPerson"}}
+                    disabled={{if this.newPeer false true}}
                     >Add</button>
                 </div>
             </div>
