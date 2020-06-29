@@ -6,6 +6,7 @@ import { tracked } from "@glimmer/tracking";
 export default class PersonComponent extends Component {
   @service store;
   @tracked isEditting = false;
+  @tracked newName = this.args.person.name;
 
   @action
   deletePerson(person) {
@@ -15,9 +16,10 @@ export default class PersonComponent extends Component {
 
   @action
   updatePerson(person) {
+    let newName = this.newName;
     this.store.findRecord("person", person.id).then(function (updatedPerson) {
       // ...after the record has loaded
-      updatedPerson.name = person.name;
+      updatedPerson.name = newName;
       person.save();
     });
     this.toggleEditting();
@@ -27,7 +29,7 @@ export default class PersonComponent extends Component {
   toggleEditting() {
     this.isEditting = !this.isEditting;
     if (this.isEditting) {
-      //   this.person.name.focus();
+      this.newName = this.args.person.name;
     }
   }
 }
