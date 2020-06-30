@@ -3,14 +3,14 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   actions: {
     createPerson() {
-      const newPeer = this.newPeer;
-      this.set('newPeer', '');
+      const newPerson = this.newPerson;
+      this.set('newPerson', '');
       const newRecord = this.store.createRecord('person', {
-        name: newPeer,
+        name: newPerson,
         relationship: 'dp',
       });
       newRecord.save().then(() => {
-        this.model.directReport.content.addObject(newRecord._internalModel);
+        this.model.members.content.addObject(newRecord._internalModel);
       });
     },
   },

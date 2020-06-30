@@ -1,6 +1,6 @@
 {{!-- List all peers --}}
     <ul class="list-group mx-5">
-        {{#each @directReport as |person|}}
+        {{#each @members as |person|}}
         <li class="list-group-item list-group-item-action">
             <Person @person={{person}}/>
         </li>
@@ -8,14 +8,14 @@
     {{!-- Add new peer --}}
         <li class="list-group-item list-group-item-action">
             <div class="input-group">
-                {{input type="text" class="form-control" placeholder="Add a new member" value=newPeer}}
+                {{input type="text" class="form-control" placeholder="Add a new member" value=newPerson}}
                 <div class="input-group-append">
                     <button 
                     class="btn btn-outline-secondary" 
                     type="button"
                     {{!-- onclick={{action "createPerson"}} --}}
                     onclick={{fn this.createPerson}}
-                    disabled={{if this.newPeer false true}}
+                    disabled={{if this.newPerson false true}}
                     >Add</button>
                 </div>
             </div>
