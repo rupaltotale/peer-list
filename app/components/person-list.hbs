@@ -2,7 +2,7 @@
     <ul class="list-group mx-5">
         {{#each @members as |person|}}
         <li class="list-group-item list-group-item-action">
-            <Person @person={{person}}/>
+            <Person @person={{person}} @members={{@members}}/>
         </li>
         {{/each}}
     {{!-- Add new peer --}}

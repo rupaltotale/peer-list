@@ -11,7 +11,9 @@ export default class PersonComponent extends Component {
   @action
   deletePerson(person) {
     let delPerson = this.store.peekRecord('person', person.id);
-    delPerson.destroyRecord();
+    delPerson.destroyRecord().then(() => {
+      this.args.members.content.removeObject(delPerson._internalModel);
+    });
   }
 
   @action
