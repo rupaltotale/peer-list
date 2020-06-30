@@ -12,7 +12,7 @@
         {{#if this.isEditting}}
             <button 
                 type="button" 
-                class="btn btn-success" 
+                class="btn btn-success btn-circle" 
                 onclick={{fn this.updatePerson @person}}
                 disabled={{if this.newName false true}}
                 >
@@ -20,7 +20,7 @@
             </button>
             <button 
                 type="button" 
-                class="btn btn-secondary" 
+                class="btn btn-secondary btn-circle" 
                 onclick={{this.toggleEditting}}
                 >
                 <FaIcon @icon="times-circle" />
@@ -28,14 +28,14 @@
         {{else}}
             <button 
                 type="button" 
-                class="btn btn-primary" 
+                class="btn btn-default" 
                 onclick={{this.toggleEditting}}>
-                <FaIcon @icon="edit" />
+                <FaIcon @icon="edit" class="primary"/>
             </button>
         {{/if}}
         <button 
             type="button" 
-            class="btn btn-danger" 
+            class="btn btn-danger btn-circle" 
             onclick={{fn this.deletePerson @person}}>
             <FaIcon @icon="trash" />
         </button>

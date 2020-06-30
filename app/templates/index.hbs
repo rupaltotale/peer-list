@@ -1,25 +1,10 @@
-    
-<div class="body">
-    {{!-- List all peers --}}
-    <ul class="list-group ">
-        {{#each @model.directReport as |person|}}
-        <li class="list-group-item list-group-item-action">
-            <Person @person={{person}}/>
-        </li>
-        {{/each}}
-    {{!-- Add new peer --}}
-        <li class="list-group-item list-group-item-action">
-            <div class="input-group">
-                {{input type="text" class="form-control" placeholder="Add a peer" value=newPeer}}
-                <div class="input-group-append">
-                    <button 
-                    class="btn btn-outline-secondary" 
-                    type="button"
-                    onclick={{action "createPerson"}}
-                    disabled={{if this.newPeer false true}}
-                    >Add</button>
-                </div>
-            </div>
-        </li>
-    </ul>
+<div class="d-flex flex-row justify-content-center w-100">
+    <div>
+        <h3 class="text-center">Direct Reporters</h3>
+        <PersonList @directReport={{@model.directReport}} @relationship="dp"/>
+    </div>
+    <div>
+        <h3 class="text-center">Peers</h3>
+        <PersonList @directReport={{@model.peer}} @relationship="peer"/>
+    </div>
 </div>
