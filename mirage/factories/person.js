@@ -1,17 +1,17 @@
 import { Factory } from 'ember-cli-mirage';
 
+const names = [
+  ['Tin Hon Ng', 'dp'],
+  ['Steven Pham', 'dp'],
+  ['Dylan Harris', 'dp'],
+  ['Dan Zitter', 'peer'],
+];
 export default Factory.extend({
   name(i) {
-    const names = ['Tin Hon Ng', 'Steven Pham', 'Dylan Harris'];
-    return `${names[i]}`; // Movie 1, Movie 2, etc.
+    return `${names[i][0]}`; // Movie 1, Movie 2, etc.
   },
 
-  //   year() {
-  //     let min = 1950;
-  //     let max = 2019;
-
-  //     return Math.floor(Math.random() * (max - min + 1)) + min;
-  //   },
-
-  //   rating: "PG-13",
+  relationship(i) {
+    return `${names[i][1]}`;
+  },
 });

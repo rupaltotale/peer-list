@@ -7,8 +7,11 @@ export default Controller.extend({
       this.set('newPeer', '');
       const newRecord = this.store.createRecord('person', {
         name: newPeer,
+        relationship: 'dp',
       });
-      newRecord.save();
+      newRecord.save().then(() => {
+        this.model.directReport.content.addObject(newRecord._internalModel);
+      });
     },
   },
 });
