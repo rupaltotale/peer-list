@@ -1,7 +1,7 @@
-import Component from "@glimmer/component";
-import { inject as service } from "@ember/service";
-import { action } from "@ember/object";
-import { tracked } from "@glimmer/tracking";
+import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class PersonComponent extends Component {
   @service store;
@@ -10,14 +10,14 @@ export default class PersonComponent extends Component {
 
   @action
   deletePerson(person) {
-    let delPerson = this.store.peekRecord("person", person.id);
+    let delPerson = this.store.peekRecord('person', person.id);
     delPerson.destroyRecord();
   }
 
   @action
   updatePerson(person) {
     let newName = this.newName;
-    this.store.findRecord("person", person.id).then(function (updatedPerson) {
+    this.store.findRecord('person', person.id).then(function (updatedPerson) {
       // ...after the record has loaded
       updatedPerson.name = newName;
       person.save();

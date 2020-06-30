@@ -1,8 +1,8 @@
-import { Factory } from "ember-cli-mirage";
+import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
   name(i) {
-    const names = ["Tin Hon Ng", "Steven Pham", "Dylan Harris"];
+    const names = ['Tin Hon Ng', 'Steven Pham', 'Dylan Harris'];
     return `${names[i]}`; // Movie 1, Movie 2, etc.
   },
 

@@ -31,10 +31,10 @@ export default function () {
   // this.get("/people/:id", (schema, request) => {
   //   return schema.people.find(request.params.id);
   // });
-  this.get("/people");
-  this.get("/people/:id");
-  this.post("/people");
-  this.patch("/people/:id");
-  this.del("/people/:id");
+  this.get('/people');
+  this.get('/people/:id');
+  this.post('/people');
+  this.patch('/people/:id');
+  this.del('/people/:id');
   this.passthrough();
 }
