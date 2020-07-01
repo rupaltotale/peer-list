@@ -12,7 +12,7 @@
             <button 
                 type="button" 
                 class="btn btn-success btn-circle" 
-                onclick={{fn this.updatePerson @person}}
+                onclick={{this.updatePerson}}
                 disabled={{if this.newName false true}}
                 >
                 <FaIcon @icon="check" />
@@ -35,14 +35,14 @@
         <button 
             type="button" 
             class="btn btn-danger btn-circle" 
-            onclick={{fn this.deletePerson @person}}>
+            onclick={{this.deletePerson}}>
             <FaIcon @icon="trash" />
         </button>
         {{input type="text" class="mx-3" placeholder="Add reporter" value=newPerson}}
         <button 
             type="button" 
             class="btn btn-secondary btn-circle" 
-            onclick={{fn this.createReporter @person}}>
+            onclick={{this.createReporter}}>
             <FaIcon @icon="plus" />
         </button>
     </div>

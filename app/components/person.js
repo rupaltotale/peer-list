@@ -40,21 +40,35 @@ export default class PersonComponent extends Component {
   }
 
   @action
-  createReporter() {
+  async createReporter() {
     const newPerson = this.newPerson;
-    this.newPerson = '';
     const person = this.args.person;
-    const newRecord = this.store.createRecord('person', {
+    this.newPerson = '';
+    let reporter = this.store.createRecord('person', {
       name: newPerson,
     });
-    newRecord.save().then(() => {
-      this.store.findRecord('person', person.id).then(function (updatedPerson) {
-        // ...after the record has loaded
-        updatedPerson.reporters.push(newRecord.id);
-        person.save();
-      });
-      // this.args.members.content.addObject(newRecord._internalModel);
+    let reporters = await person.reporters;
+    reporters.pushObject(reporter);
+    reporter.save().then(function () {
+      person.save();
     });
+    // ----
+    // const person = this.args.person;
+    // const newRecord = this.store.createRecord('person', {
+    //   name: newPerson,
+    //   manager: person,
+    // });
+    // newRecord.save();
+    // .then(() => {
+    //   this.store.findRecord('person', person.id).then(function (updatedPerson) {
+    //     // ...after the record has loaded
+    //     // updatedPerson.reporters.push(newRecord.id);
+    //     // console.log(updatedPerson.reporters);
+    //     updatedPerson.reporters.createRecord();
+    //     person.save();
+    //   });
+    //   // this.args.members.content.addObject(newRecord._internalModel);
+    // });
   }
 
   @action

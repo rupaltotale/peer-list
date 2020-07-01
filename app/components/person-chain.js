@@ -15,14 +15,6 @@ export default class PersonChainComponent extends Component {
   }
 
   getForPerson(property) {
-    const members = [];
-    if (this.args.person.get(property)) {
-      this.args.person.get(property).forEach((id) => {
-        members.push(this.store.peekRecord('person', id));
-      });
-    }
-    // console.log(this.args.person.peers);
-    // console.log(this.store.findAll('person'));
-    return members;
+    return this.args.person[property];
   }
 }

@@ -17,8 +17,12 @@ export default class IndexRoute extends Route {
     //   peer: this.store.query('person', { relationship: 'peer' }),
     // });
     return RSVP.hash({
-      root: this.store.find('person', 1),
+      // this.store.findRecord('person', 1, { include: 'peers,reporters' })
+
       all: this.store.findAll('person'),
+      root: this.store.findRecord('person', 8, {
+        include: 'manager,reporters,peers',
+      }),
     });
     // return this.store.findAll('person');
   }

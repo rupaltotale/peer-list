@@ -31,13 +31,13 @@ export default function () {
   // this.get("/people/:id", (schema, request) => {
   //   return schema.people.find(request.params.id);
   // });
-  this.get('/people', (schema, request) => {
-    // console.log(request.queryParams);
-    // console.log(schema.people.findBy(request.queryParams));
-    // console.log(schema.people.where(request.queryParams));
-    return schema.people.where(request.queryParams);
-  });
-  // this.get('/people');
+  // this.get('/people', (schema, request) => {
+  //   // console.log(request.queryParams);
+  //   // console.log(schema.people.findBy(request.queryParams));
+  //   // console.log(schema.people.where(request.queryParams));
+  //   return schema.people.where(request.queryParams);
+  // });
+  this.get('/people');
 
   this.get('/people/:id');
   this.post('/people');

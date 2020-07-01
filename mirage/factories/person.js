@@ -9,14 +9,14 @@ const names = [
 ];
 export default Factory.extend({
   name(i) {
-    return `${names[i][0]}`; // Movie 1, Movie 2, etc.
+    return `Name ${i}`; // Movie 1, Movie 2, etc.
   },
 
-  reporters(i) {
-    return names[i][1];
-  },
+  // reporters(i) {
+  //   return names[i][1];
+  // },
 
-  peers(i) {
-    return names[i][2];
-  },
+  // peers(i) {
+  //   return names[i][2];
+  // },
 });
