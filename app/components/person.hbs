@@ -1,78 +1,60 @@
+{{!-- TODO: Break up into smaller components --}}
 <div class="d-flex flex-column"
     {{on "mouseenter" this.showAddButtons}}
     {{on "mouseleave" this.hideAddButtons}}>
-    <div 
-        class="d-flex flex-row justify-content-between align-items-center my-2" 
-    >
-        <div class="mr-3">
+    <div class="my-2">
+        <PersonInput 
+            @placeholder="Change name" 
+            @value={{newName}} 
+            @disabled={{if this.isEditting false true}}
+        />
+        {{#if this.showingAddButtons}}
             {{#if this.isEditting}}
-                {{input 
-                    type="text" class="mx-3 h-100 abc xyz" placeholder="Change name" value=newName
-                }}
-            {{else}}
-            {{input 
-                type="text" class="mx-3 h-100 abc xyz" placeholder="Change name" value=newName
-                disabled=true
-            }}
-                
+                <ButtonIcon 
+                        class="btn-success" 
+                        onclick={{this.updatePerson}}
+                        disabled={{if this.newName false true}} 
+                        @icon="check"
+                />
             {{/if}}
-        </div>
-        <div class="d-flex flex-row justify-content-start">
-            {{#if this.isEditting}}
-                <button 
-                    type="button" 
-                    class="btn btn-success btn-circle ml-1" 
-                    onclick={{this.updatePerson}}
-                    disabled={{if this.newName false true}}
-                    >
-                    <FaIcon @icon="check" />
-                </button>
-                <button 
-                    type="button" 
-                    class="btn btn-secondary btn-circle ml-1" 
-                    onclick={{this.toggleEditting}}
-                    >
-                    <FaIcon @icon="times-circle" />
-                </button>
-            {{else}}
-                <button 
-                    type="button" 
-                    class="btn btn-primary btn-circle" 
-                    onclick={{this.toggleEditting}}>
-                    <FaIcon @icon="edit" class="primary"/>
-                </button>
-            {{/if}}
-            <button 
-                type="button" 
-                class="btn btn-danger btn-circle mx-3" 
-                onclick={{this.deletePerson}}>
-                <FaIcon @icon="trash" />
-            </button>
-        </div>
+            <ButtonIcon 
+                class="btn-secondary" 
+                onclick={{this.toggleEditting}}
+                @icon={{if this.isEditting "times-circle" "edit"}}
+            />
+        {{/if}}
     </div>
     {{#if this.showingAddButtons}}
-
         <div class="my-1">
-            {{input type="text" class="mx-3" placeholder="Add reporter" value=newPerson}}
-            <button 
-                type="button" 
-                class="btn btn-secondary btn-circle ml-1" 
+            <PersonInput 
+                @placeholder="Add reporter" 
+                @value={{newPerson}} 
+            />
+            <ButtonIcon 
+                class="btn-secondary" 
                 onclick={{this.createReporter}}
                 disabled={{if this.newPerson false true}}
-                >
-                <FaIcon @icon="plus" />
-            </button>
+                @icon="plus"
+            />
         </div>
         <div class="my-1">
-            {{input type="text" class="mx-3" placeholder="Add peer" value=newPeer}}
-            <button 
-                type="button" 
-                class="btn btn-secondary btn-circle ml-1" 
+            <PersonInput 
+                @placeholder="Add peer" 
+                @value={{newPeer}} 
+            />
+            <ButtonIcon 
+                class="btn-secondary" 
                 onclick={{this.createPeer}}
                 disabled={{if this.newPeer false true}}
-                >
-                <FaIcon @icon="plus" />
-            </button>
+                @icon="plus"
+            />
+        </div>
+        <div class="d-flex flex-row justify-content-center m-2">
+            <button 
+                type="button"
+                class="btn btn-secondary btn-sm btn-block" 
+                onclick={{this.deletePerson}}
+            >Delete</button>
         </div>
     {{/if}}
 </div>

@@ -1,3 +1,4 @@
+// TODO: Remove all comments + make only one fetch + don't include peers
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import RSVP from 'rsvp';

@@ -1,3 +1,4 @@
+// TODO: Delete file
 import Controller from '@ember/controller';
 
 export default Controller.extend({
