@@ -12,9 +12,13 @@ export default class IndexRoute extends Route {
     //     })
     //   )
     // );
+    // return RSVP.hash({
+    //   root: this.store.query('person', { relationship: 'dp' }),
+    //   peer: this.store.query('person', { relationship: 'peer' }),
+    // });
     return RSVP.hash({
-      directReport: this.store.query('person', { relationship: 'dp' }),
-      peer: this.store.query('person', { relationship: 'peer' }),
+      root: this.store.find('person', 1),
+      all: this.store.findAll('person'),
     });
     // return this.store.findAll('person');
   }

@@ -1,14 +1,13 @@
 
-<div class="d-flex flex-row justify-content-between align-items-center">
-    
-        {{#if this.isEditting}}
-            {{input type="text" class="form-control w-50 " value=newName}}
-        {{else}}
+<div class="d-flex flex-row justify-content-between align-items-center my-2">
+    {{#if this.isEditting}}
+        {{input type="text" class="form-control w-50 " value=newName}}
+    {{else}}
         <div class="mr-3">
             {{@person.name}}
         </div>
-        {{/if}}
-    <div>
+    {{/if}}
+    <div class="d-flex flex-row">
         {{#if this.isEditting}}
             <button 
                 type="button" 
@@ -38,6 +37,13 @@
             class="btn btn-danger btn-circle" 
             onclick={{fn this.deletePerson @person}}>
             <FaIcon @icon="trash" />
+        </button>
+        {{input type="text" class="mx-3" placeholder="Add reporter" value=newPerson}}
+        <button 
+            type="button" 
+            class="btn btn-secondary btn-circle" 
+            onclick={{fn this.createReporter @person}}>
+            <FaIcon @icon="plus" />
         </button>
     </div>
 </div>

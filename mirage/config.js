@@ -42,6 +42,16 @@ export default function () {
   this.get('/people/:id');
   this.post('/people');
   this.patch('/people/:id');
-  this.del('/people/:id');
+  this.del('/people/:id', (schema, request) => {
+    // console.log(request);
+    // const id = Number.parseInt(request.params.id);
+    // schema.people.all().models.forEach((element) => {
+    //   if (element.attrs.reporters.includes(id)) {
+    //     // element.attrs.reporters.remove(id);
+    //     // console.log(type(element.attrs.reporters));
+    //     element.attrs.reporters = [];
+    //   }
+    // });
+  });
   this.passthrough();
 }

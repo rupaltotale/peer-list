@@ -1,0 +1,14 @@
+<div>
+    <Person @person={{@person}}></Person>
+    <div class="ml-3">
+        {{#each this.reporters as |reporter|}}
+            <PersonChain @person={{reporter}} @renderPeers={{false}}/>
+        {{/each}}
+        
+    </div>
+    {{#if @renderPeers}}
+        {{#each this.peers as |peer|}}
+            <PersonChain @person={{peer}} @renderPeers={{false}}/>
+        {{/each}}
+    {{/if}}
+</div>

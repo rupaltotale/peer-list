@@ -1,4 +1,4 @@
-<div class="d-flex flex-row justify-content-center w-100">
+{{!-- <div class="d-flex flex-row justify-content-center w-100">
     <div>
         <h3 class="text-center">Direct Reporters</h3>
         <PersonList @members={{@model.directReport}} @relationship="dp"/>
@@ -7,4 +7,7 @@
         <h3 class="text-center">Peers</h3>
         <PersonList @members={{@model.peer}} @relationship="peer"/>
     </div>
+</div> --}}
+<div>
+    <PersonChain @person={{@model.root}} @renderPeers={{true}}></PersonChain>
 </div>
