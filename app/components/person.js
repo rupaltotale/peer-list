@@ -14,30 +14,21 @@ export default class PersonComponent extends Component {
   deletePerson() {
     const person = this.args.person;
     let delPerson = this.store.peekRecord('person', person.id);
-    delPerson.destroyRecord().then(() => {
-      // const people = this.store.peekAll('person');
-      // people.content.forEach((element) => {
-      //   console.log(element);
-      // });
-      // this.store.findRecord('person', person.id).then(function (updatedPerson) {
-      //   // ...after the record has loaded
-      //   updatedPerson.reporters.remove(delPerson.id);
-      //   person.save();
-      // });
-      // this.args.members.content.addObject(newRecord._internalModel);
-    });
+    delPerson.destroyRecord();
   }
 
   @action
   updatePerson() {
     const person = this.args.person;
     let newName = this.newName;
+    const _toggleEditting = () => {
+      this.toggleEditting();
+    };
     this.store.findRecord('person', person.id).then(function (updatedPerson) {
       // ...after the record has loaded
       updatedPerson.name = newName;
-      person.save();
+      person.save().then(_toggleEditting);
     });
-    this.toggleEditting();
   }
 
   @action
