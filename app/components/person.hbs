@@ -51,7 +51,9 @@
         <button 
             type="button" 
             class="btn btn-secondary btn-circle ml-1" 
-            onclick={{this.createReporter}}>
+            onclick={{this.createReporter}}
+            disabled={{if this.newPerson false true}}
+            >
             <FaIcon @icon="plus" />
         </button>
     </div>
