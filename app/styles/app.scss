@@ -19,3 +19,10 @@ body {
   font-size: 12px;
   line-height: 1.42857;
 }
+
+.person div {
+  &:hover {
+    background-color: rgb(247, 225, 213);
+    border-radius: 10px;
+  }
+}

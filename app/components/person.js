@@ -9,6 +9,17 @@ export default class PersonComponent extends Component {
   @tracked newName = this.args.person.name;
   @tracked newPerson = '';
   @tracked newPeer = '';
+  @tracked showingAddButtons = false;
+
+  @action
+  showAddButtons() {
+    this.showingAddButtons = true;
+  }
+
+  @action
+  hideAddButtons() {
+    this.showingAddButtons = false;
+  }
 
   @action
   deletePerson() {

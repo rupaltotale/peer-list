@@ -1,13 +1,15 @@
 <div>
     {{#if @renderPeers}}
     {{else}}
+    <div class="person">
         <Person @person={{@person}}></Person>
+    </div>
     {{/if}}
     <div class="ml-5 pl-2 border-left border-primary">
         {{#each this.reporters as |reporter|}}
             <PersonChain @person={{reporter}} @renderPeers={{false}}/>
         {{/each}}
-    </div>
+        </div>
     {{!-- {{#if @renderPeers}}
         {{#each this.peers as |peer|}}
             <PersonChain @person={{peer}} @renderPeers={{false}}/>
