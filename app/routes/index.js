@@ -19,8 +19,10 @@ export default class IndexRoute extends Route {
     return RSVP.hash({
       // this.store.findRecord('person', 1, { include: 'peers,reporters' })
 
-      all: this.store.findAll('person'),
-      root: this.store.findRecord('person', 8, {
+      all: this.store.findAll('person', {
+        include: 'manager,reporters,peers',
+      }),
+      root: this.store.findRecord('person', 12, {
         include: 'manager,reporters,peers',
       }),
     });

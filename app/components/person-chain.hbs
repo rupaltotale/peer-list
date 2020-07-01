@@ -1,9 +1,9 @@
 <div>
-    {{!-- {{#if @renderPeers}} --}}
-    {{!-- {{else}} --}}
+    {{#if @renderPeers}}
+    {{else}}
         <Person @person={{@person}}></Person>
-    {{!-- {{/if}} --}}
-    <div class="ml-3">
+    {{/if}}
+    <div class="ml-5">
         {{#each this.reporters as |reporter|}}
             <PersonChain @person={{reporter}} @renderPeers={{false}}/>
         {{/each}}

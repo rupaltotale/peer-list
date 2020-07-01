@@ -4,9 +4,14 @@ export default function (server) {
     This data will not be loaded in your tests.
   */
   // const list = server.createList('person', 5);
-  const list = server.createList('person', 2, {
-    reporters: server.createList('person', 3),
-    peers: server.createList('person', 3),
+  const list = server.createList('person', 1, {
+    reporters: server.createList('person', 5),
+    peers: server.createList('person', 5),
   });
+  console.log(list[0].peers.models);
+  const root = server.create('person', {
+    reporters: list.concat(list[0].peers.models),
+  });
+  console.log(root);
   console.log(list);
 }
