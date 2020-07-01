@@ -8,6 +8,7 @@ export default class PersonComponent extends Component {
   @tracked isEditting = false;
   @tracked newName = this.args.person.name;
   @tracked newPerson = '';
+  @tracked newPeer = '';
 
   @action
   deletePerson() {
@@ -52,30 +53,25 @@ export default class PersonComponent extends Component {
     reporter.save().then(function () {
       person.save();
     });
-    // ----
-    // const person = this.args.person;
-    // const newRecord = this.store.createRecord('person', {
-    //   name: newPerson,
-    //   manager: person,
-    // });
-    // newRecord.save();
-    // .then(() => {
-    //   this.store.findRecord('person', person.id).then(function (updatedPerson) {
-    //     // ...after the record has loaded
-    //     // updatedPerson.reporters.push(newRecord.id);
-    //     // console.log(updatedPerson.reporters);
-    //     updatedPerson.reporters.createRecord();
-    //     person.save();
-    //   });
-    //   // this.args.members.content.addObject(newRecord._internalModel);
-    // });
+  }
+
+  @action
+  async createPeer() {
+    const newPeer = this.newPeer;
+    const person = this.args.person;
+    this.newPeer = '';
+    let peer = this.store.createRecord('person', {
+      name: newPeer,
+      manager: person.manager,
+    });
+    peer.save();
   }
 
   @action
   toggleEditting() {
     this.isEditting = !this.isEditting;
-    if (this.isEditting) {
-      this.newName = this.args.person.name;
-    }
+    // if (this.isEditting) {
+    this.newName = this.args.person.name;
+    // }
   }
 }

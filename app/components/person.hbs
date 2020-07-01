@@ -4,19 +4,19 @@
     <div class="mr-3">
         {{#if this.isEditting}}
             {{input 
-                type="text" class="mx-3 h-100 form-control" placeholder="Change name" value=newName
+                type="text" class="mx-3 h-100 form-control w-75" placeholder="Change name" value=newName
             }}
             {{!-- {{input type="text" class="form-control w-50 " value=newName}} --}}
         {{else}}
         {{input 
-            type="text" class="mx-3 h-100 form-control" placeholder="Change name" value=newName
+            type="text" class="mx-3 h-100 form-control w-75" placeholder="Change name" value=newName
             disabled=true
         }}
                 {{!-- {{@person.name}} --}}
             
         {{/if}}
     </div>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row justify-content-start">
         {{#if this.isEditting}}
             <button 
                 type="button" 
@@ -47,12 +47,21 @@
             onclick={{this.deletePerson}}>
             <FaIcon @icon="trash" />
         </button>
-        {{input type="text" class="mx-3" placeholder="Add reporter" value=newPerson}}
+        {{input type="text" class="mx-3 form-control w-25" placeholder="Add reporter" value=newPerson}}
         <button 
             type="button" 
             class="btn btn-secondary btn-circle ml-1" 
             onclick={{this.createReporter}}
             disabled={{if this.newPerson false true}}
+            >
+            <FaIcon @icon="plus" />
+        </button>
+        {{input type="text" class="mx-3 form-control w-25" placeholder="Add peer" value=newPeer}}
+        <button 
+            type="button" 
+            class="btn btn-secondary btn-circle ml-1" 
+            onclick={{this.createPeer}}
+            disabled={{if this.newPeer false true}}
             >
             <FaIcon @icon="plus" />
         </button>
