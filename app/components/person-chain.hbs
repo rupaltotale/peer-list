@@ -3,7 +3,7 @@
     {{else}}
         <Person @person={{@person}}></Person>
     {{/if}}
-    <div class="ml-5">
+    <div class="ml-5 pl-2 border-left border-primary">
         {{#each this.reporters as |reporter|}}
             <PersonChain @person={{reporter}} @renderPeers={{false}}/>
         {{/each}}
