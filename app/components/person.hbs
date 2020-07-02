@@ -36,8 +36,9 @@
             <div class="d-flex flex-column bg-light border border-secondary">
                 <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
                 <MenuButton onclick={{this.deletePerson}}>Delete</MenuButton>
-                <MenuButton onclick={{this.createPeer}}>Add Peer</MenuButton>
-                <MenuButton onclick={{this.createReporter}}>Add Direct Report</MenuButton>
+                <MenuButton onclick={{this.addNewPeer}}>Add Peer</MenuButton>
+                <MenuButton onclick={{this.addNewReporter}}>Add Direct Report</MenuButton>
+                <MenuButton onclick={{this.addNewManager}}>Add Manager</MenuButton>
             </div>
         </div>
         {{/if}}
@@ -68,7 +69,7 @@
             />
             <ButtonIcon 
                 class="btn-secondary" 
-                onclick={{this.createReporter}}
+                onclick={{this.addNewReporter}}
                 disabled={{if this.newPerson false true}}
                 @icon="plus"
             />
@@ -80,7 +81,7 @@
             />
             <ButtonIcon 
                 class="btn-secondary" 
-                onclick={{this.createPeer}}
+                onclick={{this.addNewPeer}}
                 disabled={{if this.newPeer false true}}
                 @icon="plus"
             />

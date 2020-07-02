@@ -45,12 +45,10 @@ export default class PersonComponent extends Component {
   }
 
   @action
-  async createReporter() {
-    const newPerson = '';
+  async addNewReporter() {
     const person = this.args.person;
-    this.newPerson = '';
     let reporter = this.store.createRecord('person', {
-      name: newPerson,
+      name: '',
     });
     let reporters = await person.reporters;
     reporters.pushObject(reporter);
@@ -60,15 +58,30 @@ export default class PersonComponent extends Component {
   }
 
   @action
-  async createPeer() {
-    const newPeer = '';
+  async addNewPeer() {
     const person = this.args.person;
-    this.newPeer = '';
     let peer = this.store.createRecord('person', {
-      name: newPeer,
+      name: '',
       manager: person.manager,
     });
     peer.save();
+  }
+
+  @action
+  async addNewManager() {
+    const person = this.args.person;
+    let oldManager = await person.manager;
+    let manager = this.store.createRecord('person', {
+      name: '',
+      reporters: oldManager.reporters,
+    });
+    oldManager.reporters.forEach((reporter) => {
+      oldManager.reporters.removeObject(reporter);
+    });
+    oldManager.reporters.pushObject(manager);
+    manager.save().then(function () {
+      oldManager.save();
+    });
   }
 
   @action
