@@ -3,7 +3,7 @@
 <div>
     {{#if @renderPeers}}
     {{else}}
-    <div class="person">
+    <div>
         <Person @person={{@person}}></Person>
     </div>
     {{/if}}
@@ -12,9 +12,4 @@
             <PersonChain @person={{reporter}} @renderPeers={{false}}/>
         {{/each}}
     </div>
-    {{!-- {{#if @renderPeers}}
-        {{#each this.peers as |peer|}}
-            <PersonChain @person={{peer}} @renderPeers={{false}}/>
-        {{/each}}
-    {{/if}} --}}
 </div>

@@ -1,14 +1,46 @@
 {{!-- TODO: Break up into smaller components --}}
-<div class="d-flex flex-column"
-    {{on "mouseenter" this.showAddButtons}}
-    {{on "mouseleave" this.hideAddButtons}}>
-    <div class="my-2">
+<div class="d-flex flex-column position-relative"
+    {{on "mouseleave" this.hideEditButtons}}
+>
+    <div class="d-flex flex-row my-2 align-items-center">
         <PersonInput 
-            @placeholder="Change name" 
-            @value={{newName}} 
+            @placeholder="Add name" 
+            @value={{this.newName}} 
             @disabled={{if this.isEditting false true}}
-        />
+        >
+            {{#if this.isEditting}}
+                <ButtonIcon 
+                        class="btn-success" 
+                        onclick={{this.updatePerson}}
+                        disabled={{if this.newName false true}} 
+                        @icon="check"
+                />
+                <ButtonIcon 
+                    class="btn-secondary" 
+                    onclick={{this.toggleEditting}}
+                    @icon={{"times-circle"}}
+                />
+            {{/if}}
+            <ButtonIcon 
+                class="btn-secondary" 
+                {{!-- onclick={{this.updatePerson}} --}}
+                {{on "mouseenter" this.showEditButtons}}
+                @icon="ellipsis-v"
+            />
+        </PersonInput>
         {{#if this.showingAddButtons}}
+        <div class="d-flex position-absolute justify-content-center align-items-center" style="left: 100%;">
+            <div class="arrow-left"></div>
+            <div class="d-flex flex-column bg-light border border-secondary">
+                <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
+                <MenuButton onclick={{this.deletePerson}}>Delete</MenuButton>
+                <MenuButton onclick={{this.createPeer}}>Add Peer</MenuButton>
+                <MenuButton onclick={{this.createReporter}}>Add Direct Report</MenuButton>
+            </div>
+        </div>
+        {{/if}}
+
+        {{!-- {{#if this.showingAddButtons}}
             {{#if this.isEditting}}
                 <ButtonIcon 
                         class="btn-success" 
@@ -23,7 +55,9 @@
                 @icon={{if this.isEditting "times-circle" "edit"}}
             />
         {{/if}}
+        --}}
     </div>
+    {{!-- 
     {{#if this.showingAddButtons}}
         <div class="my-1">
             <PersonInput 
@@ -56,5 +90,5 @@
                 onclick={{this.deletePerson}}
             >Delete</button>
         </div>
-    {{/if}}
+    {{/if}} --}}
 </div>

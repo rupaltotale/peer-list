@@ -1,1 +1,6 @@
-{{input type="text" class="mx-2" placeholder=@placeholder value=@value disabled=@disabled}}
+<div class="input-group mx-2">
+    {{input type="text" class=" form-control" placeholder=@placeholder value=@value disabled=@disabled}}
+    <div class="input-group-append">
+        {{yield}}
+    </div>
+</div>

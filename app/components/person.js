@@ -2,22 +2,24 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import $ from 'jquery';
 
 export default class PersonComponent extends Component {
   @service store;
-  @tracked isEditting = false;
+  @tracked isEditting = this.args.person.name ? false : true;
   @tracked newName = this.args.person.name;
-  @tracked newPerson = '';
-  @tracked newPeer = '';
+
+  // @tracked newPerson = '';
+  // @tracked newPeer = '';
   @tracked showingAddButtons = false;
 
   @action
-  showAddButtons() {
+  showEditButtons() {
     this.showingAddButtons = true;
   }
 
   @action
-  hideAddButtons() {
+  hideEditButtons() {
     this.showingAddButtons = false;
   }
 
@@ -44,7 +46,7 @@ export default class PersonComponent extends Component {
 
   @action
   async createReporter() {
-    const newPerson = this.newPerson;
+    const newPerson = '';
     const person = this.args.person;
     this.newPerson = '';
     let reporter = this.store.createRecord('person', {
@@ -59,7 +61,7 @@ export default class PersonComponent extends Component {
 
   @action
   async createPeer() {
-    const newPeer = this.newPeer;
+    const newPeer = '';
     const person = this.args.person;
     this.newPeer = '';
     let peer = this.store.createRecord('person', {
