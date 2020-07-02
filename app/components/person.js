@@ -9,6 +9,7 @@ export default class PersonComponent extends Component {
   @tracked isEditting = this.selected;
   @tracked newName = this.args.person.name;
   @tracked displayingMenuOptions = false;
+  @tracked showModal = false;
 
   @action
   showMenuOptions() {
@@ -24,7 +25,10 @@ export default class PersonComponent extends Component {
   deletePerson() {
     const person = this.args.person;
     let delPerson = this.store.peekRecord('person', person.id);
-    delPerson.destroyRecord();
+    const _hideModal = () => {
+      this.hideModal();
+    };
+    delPerson.destroyRecord().then(_hideModal);
   }
 
   @action
@@ -86,5 +90,15 @@ export default class PersonComponent extends Component {
   toggleEditting() {
     this.isEditting = !this.isEditting;
     this.newName = this.args.person.name;
+  }
+
+  @action
+  hideModal() {
+    this.showModal = false;
+  }
+
+  @action
+  displayModal() {
+    this.showModal = true;
   }
 }

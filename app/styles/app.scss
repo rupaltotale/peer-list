@@ -30,9 +30,30 @@ body {
   &:hover {
     color: $primary-background-color;
     background-color: $linkedin-slate-dark;
+    outline: none !important;
+    box-shadow: none;
   }
   &:disabled {
     background-color: $linkedin-slate;
+    outline: none !important;
+    box-shadow: none;
+  }
+}
+
+.delete-btn {
+  background-color: $linkedin-slate;
+  color: $primary-background-color;
+  &:hover {
+    color: $primary-background-color;
+    background-color: $linkedin-slate-dark;
+  }
+  &:active {
+    outline: none !important;
+    box-shadow: none;
+  }
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
   }
 }
 
