@@ -5,8 +5,8 @@ export default function (server) {
   */
   // const list = server.createList('person', 5);
   const list = server.createList('person', 1, {
-    reporters: server.createList('person', 5),
-    peers: server.createList('person', 5),
+    reporters: server.createList('person', 8),
+    peers: server.createList('person', 1),
   });
   // console.log(list[0].peers.models);
   const root = server.create('person', {
