@@ -1,6 +1,5 @@
-{{!-- TODO: Break up into smaller components --}}
 <div class="d-flex flex-column position-relative"
-    {{on "mouseleave" this.hideEditButtons}}
+    {{on "mouseleave" this.hideMenuOptions}}
 >
     <div class="d-flex flex-row my-2 align-items-center">
         <PersonInput 
@@ -25,73 +24,21 @@
             {{/if}}
             <ButtonIcon 
                 class="btn-secondary" 
-                {{!-- onclick={{this.updatePerson}} --}}
-                {{on "mouseenter" this.showEditButtons}}
+                {{on "mouseenter" this.showMenuOptions}}
                 @icon="ellipsis-v"
             />
         </PersonInput>
-        {{#if this.showingAddButtons}}
-        <div class="d-flex position-absolute justify-content-center align-items-center" style="left: 100%;">
-            <div class="arrow-left"></div>
-            <div class="d-flex flex-column bg-light border border-secondary">
-                <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
-                <MenuButton onclick={{this.deletePerson}}>Delete</MenuButton>
-                <MenuButton onclick={{this.addNewPeer}}>Add Peer</MenuButton>
-                <MenuButton onclick={{this.addNewReporter}}>Add Direct Report</MenuButton>
-                <MenuButton onclick={{this.addNewManager}}>Add Manager</MenuButton>
+        {{#if this.displayingMenuOptions}}
+            <div class="d-flex position-absolute justify-content-center align-items-center" style="left: 100%;">
+                <div class="arrow-left"></div>
+                <div class="d-flex flex-column bg-light border border-secondary">
+                    <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
+                    <MenuButton onclick={{this.deletePerson}}>Delete</MenuButton>
+                    <MenuButton onclick={{this.addNewPeer}}>Add Peer</MenuButton>
+                    <MenuButton onclick={{this.addNewReporter}}>Add Direct Report</MenuButton>
+                    <MenuButton onclick={{this.addNewManager}}>Add Manager</MenuButton>
+                </div>
             </div>
-        </div>
         {{/if}}
-
-        {{!-- {{#if this.showingAddButtons}}
-            {{#if this.isEditting}}
-                <ButtonIcon 
-                        class="btn-success" 
-                        onclick={{this.updatePerson}}
-                        disabled={{if this.newName false true}} 
-                        @icon="check"
-                />
-            {{/if}}
-            <ButtonIcon 
-                class="btn-secondary" 
-                onclick={{this.toggleEditting}}
-                @icon={{if this.isEditting "times-circle" "edit"}}
-            />
-        {{/if}}
-        --}}
     </div>
-    {{!-- 
-    {{#if this.showingAddButtons}}
-        <div class="my-1">
-            <PersonInput 
-                @placeholder="Add reporter" 
-                @value={{newPerson}} 
-            />
-            <ButtonIcon 
-                class="btn-secondary" 
-                onclick={{this.addNewReporter}}
-                disabled={{if this.newPerson false true}}
-                @icon="plus"
-            />
-        </div>
-        <div class="my-1">
-            <PersonInput 
-                @placeholder="Add peer" 
-                @value={{newPeer}} 
-            />
-            <ButtonIcon 
-                class="btn-secondary" 
-                onclick={{this.addNewPeer}}
-                disabled={{if this.newPeer false true}}
-                @icon="plus"
-            />
-        </div>
-        <div class="d-flex flex-row justify-content-center m-2">
-            <button 
-                type="button"
-                class="btn btn-secondary btn-sm btn-block" 
-                onclick={{this.deletePerson}}
-            >Delete</button>
-        </div>
-    {{/if}} --}}
 </div>

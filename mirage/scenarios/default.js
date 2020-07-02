@@ -8,10 +8,10 @@ export default function (server) {
     reporters: server.createList('person', 5),
     peers: server.createList('person', 5),
   });
-  console.log(list[0].peers.models);
+  // console.log(list[0].peers.models);
   const root = server.create('person', {
     reporters: list.concat(list[0].peers.models),
   });
-  console.log(root);
-  console.log(list);
+  // console.log(root);
+  // console.log(list);
 }

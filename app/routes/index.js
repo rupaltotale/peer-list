@@ -21,10 +21,10 @@ export default class IndexRoute extends Route {
       // this.store.findRecord('person', 1, { include: 'peers,reporters' })
 
       all: this.store.findAll('person', {
-        include: 'manager,reporters,peers',
+        include: 'manager,reporters',
       }),
       root: this.store.findRecord('person', 12, {
-        include: 'manager,reporters,peers',
+        include: 'manager,reporters',
       }),
     });
     // return this.store.findAll('person');

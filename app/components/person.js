@@ -8,19 +8,16 @@ export default class PersonComponent extends Component {
   @tracked selected = this.args.person.name ? false : true;
   @tracked isEditting = this.selected;
   @tracked newName = this.args.person.name;
-
-  // @tracked newPerson = '';
-  // @tracked newPeer = '';
-  @tracked showingAddButtons = false;
+  @tracked displayingMenuOptions = false;
 
   @action
-  showEditButtons() {
-    this.showingAddButtons = true;
+  showMenuOptions() {
+    this.displayingMenuOptions = true;
   }
 
   @action
-  hideEditButtons() {
-    this.showingAddButtons = false;
+  hideMenuOptions() {
+    this.displayingMenuOptions = false;
   }
 
   @action
@@ -87,8 +84,6 @@ export default class PersonComponent extends Component {
   @action
   toggleEditting() {
     this.isEditting = !this.isEditting;
-    // if (this.isEditting) {
     this.newName = this.args.person.name;
-    // }
   }
 }
