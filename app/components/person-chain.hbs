@@ -4,7 +4,7 @@
             <Person @person={{@person}}></Person>
         </div>
     {{/if}}
-    <div class="ml-5 pl-2 border-left border-primary">
+    <div class="ml-5 pl-2 person-chain">
         {{#each this.reporters as |reporter|}}
             <PersonChain @person={{reporter}} @shouldRender={{true}}/>
         {{/each}}

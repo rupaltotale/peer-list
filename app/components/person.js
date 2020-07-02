@@ -49,6 +49,7 @@ export default class PersonComponent extends Component {
     });
     let reporters = await person.reporters;
     reporters.pushObject(reporter);
+    // TODO: use await here
     reporter.save().then(function () {
       person.save();
     });

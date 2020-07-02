@@ -1,8 +1,12 @@
 @import 'ember-bootstrap/bootstrap';
 $font-stack: Helvetica, sans-serif;
 
-$primary-color: #333;
-$primary-background-color: rgb(245, 243, 230);
+$primary-color: #283e4a;
+$primary-background-color: whitesmoke;
+$linkedin-blue: rgb(8, 60, 230);
+$linkedin-gray: #293e4a;
+$linkedin-slate: rgb(92, 111, 124, 0.9);
+$linkedin-slate-dark: rgb(92, 111, 124);
 
 body {
   font: 100% $font-stack;
@@ -20,13 +24,51 @@ body {
   line-height: 1.42857;
 }
 
+.icon-btn {
+  background-color: $linkedin-slate;
+  color: $primary-background-color;
+  &:hover {
+    color: $primary-background-color;
+    background-color: $linkedin-slate-dark;
+  }
+  &:disabled {
+    background-color: $linkedin-slate;
+  }
+}
+
+.person-chain {
+  border-style: solid;
+  border-width: 0px 0 0px 3px;
+  border-color: rgb(0, 115, 177);
+  border-radius: 5px;
+}
+
+.header {
+  background-color: $primary-color;
+  color: $primary-background-color;
+}
+
 .menu {
-  div {
-    background-color: rgb(26, 9, 1);
-    &:hover {
-      background-color: rgb(247, 225, 213);
-      border-radius: 10px;
-    }
+  background-color: $linkedin-gray;
+  // color: $primary-background-color;
+}
+
+.menu-btn {
+  background-color: $linkedin-gray;
+  color: $primary-background-color;
+  &:hover {
+    color: $primary-background-color;
+    font-weight: bold;
+  }
+  &:active {
+    font-weight: bold;
+    outline: none !important;
+    box-shadow: none;
+  }
+  &:focus {
+    font-weight: bold;
+    outline: none !important;
+    box-shadow: none;
   }
 }
 .arrow-left {
@@ -35,5 +77,5 @@ body {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 
-  border-right: 10px solid rgb(7, 7, 7);
+  border-right: 10px solid $linkedin-gray;
 }

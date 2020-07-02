@@ -10,20 +10,20 @@
         >
             {{#if this.isEditting}}
                 <ButtonIcon 
-                        class="btn-success" 
+                        class="icon-btn" 
                         onclick={{this.updatePerson}}
                         disabled={{if this.newName false true}} 
                         @icon="check"
                 />
                 <ButtonIcon 
-                    class="btn-secondary" 
+                    class="icon-btn" 
                     onclick={{this.toggleEditting}}
                     disabled={{if @person.name false true}} 
                     @icon={{"times-circle"}}
                 />
             {{/if}}
             <ButtonIcon 
-                class="btn-secondary" 
+                class="icon-btn" 
                 {{on "mouseenter" this.showMenuOptions}}
                 @icon="ellipsis-v"
             />
@@ -31,7 +31,7 @@
         {{#if this.displayingMenuOptions}}
             <div class="d-flex position-absolute justify-content-center align-items-center" style="left: 100%;">
                 <div class="arrow-left"></div>
-                <div class="d-flex flex-column bg-light border border-secondary">
+                <div class="d-flex flex-column menu">
                     <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
                     <MenuButton onclick={{this.deletePerson}}>Delete</MenuButton>
                     <MenuButton onclick={{this.addNewPeer}}>Add Peer</MenuButton>
