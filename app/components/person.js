@@ -2,11 +2,11 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import $ from 'jquery';
 
 export default class PersonComponent extends Component {
   @service store;
-  @tracked isEditting = this.args.person.name ? false : true;
+  @tracked selected = this.args.person.name ? false : true;
+  @tracked isEditting = this.selected;
   @tracked newName = this.args.person.name;
 
   // @tracked newPerson = '';
