@@ -11,6 +11,7 @@ export default function (server) {
   // console.log(list[0].peers.models);
   const root = server.create('person', {
     reporters: list.concat(list[0].peers.models),
+    name: 'Heather',
   });
   // console.log(root);
   // console.log(list);

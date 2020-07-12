@@ -1,12 +1,12 @@
-<div>
-    {{#if @shouldRender}}
-        <div>
-            <Person @person={{@person}}></Person>
-        </div>
-    {{/if}}
-    <div class="ml-5 pl-2 person-chain">
+<li>
+    {{!-- {{#if @shouldRender}} --}}
+        <Person @person={{@person}}></Person>
+    {{!-- {{/if}} --}}
+    {{#if this.reporters}}
+        <ul>
         {{#each this.reporters as |reporter|}}
             <PersonChain @person={{reporter}} @shouldRender={{true}}/>
         {{/each}}
-    </div>
-</div>
+        </ul>
+    {{/if}}
+</li>
