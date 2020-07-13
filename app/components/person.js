@@ -10,6 +10,7 @@ export default class PersonComponent extends Component {
   @tracked newName = this.args.person.name;
   @tracked displayingMenuOptions = false;
   @tracked showModal = false;
+  @tracked displayingCards = false;
 
   @action
   showMenuOptions() {
@@ -88,6 +89,7 @@ export default class PersonComponent extends Component {
 
   @action
   toggleEditting() {
+    console.log('editting');
     this.isEditting = !this.isEditting;
     this.newName = this.args.person.name;
   }
@@ -100,5 +102,20 @@ export default class PersonComponent extends Component {
   @action
   displayModal() {
     this.showModal = true;
+  }
+
+  @action
+  showCards() {
+    this.displayingCards = true;
+  }
+
+  @action
+  hideCards() {
+    this.displayingCards = false;
+  }
+
+  @action
+  toggleCards() {
+    this.displayingCards = !this.displayingCards;
   }
 }

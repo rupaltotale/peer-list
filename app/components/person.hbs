@@ -1,47 +1,89 @@
 <div class="tf-nc d-flex flex-column position-relative"
     {{on "mouseleave" this.hideMenuOptions}}
 >
-    <div class="d-flex flex-row my-2 align-items-center">
-        <PersonInput 
-            @placeholder="Add name" 
-            @value={{this.newName}} 
-            @disabled={{if this.isEditting false true}}
-            @select={{this.selected}}
-        >
+    <div class="d-flex flex-column jumbotron">
+        <div class="d-flex flex-row align-items-center justify-content-between">
+            {{#if this.displayingCards}}
+            <ButtonIcon 
+                class="icon-btn p-1 m-1" 
+                onclick={{this.hideCards}}
+                @icon="angle-down"
+            />
+            {{else}}
+            <ButtonIcon 
+                class="icon-btn p-1 m-1" 
+                onclick={{this.showCards}}
+                @icon="angle-right"
+            />
+            {{/if}}
             {{#if this.isEditting}}
+                {{focus-input 
+                    type="text" 
+                    class="text-center person-input p-1 m-1" 
+                    placeholder="Enter a name..." 
+                    value=this.newName 
+                    select=this.selected
+                }}
                 <ButtonIcon 
-                        class="icon-btn" 
-                        onclick={{this.updatePerson}}
-                        disabled={{if this.newName false true}} 
-                        @icon="check"
+                    class="icon-btn p-1 m-1" 
+                    onclick={{this.updatePerson}}
+                    disabled={{if this.newName false true}} 
+                    @icon="check"
                 />
                 <ButtonIcon 
-                    class="icon-btn" 
+                    class="icon-btn p-1 m-1" 
                     onclick={{this.toggleEditting}}
                     disabled={{if @person.name false true}} 
                     @icon={{"times-circle"}}
                 />
+            {{else}}
+                <button
+                    type="button" 
+                    class="btn btn-default p-1 m-1 btn-no-outline" 
+                    placeholder="Enter a name..." 
+                    value={{this.newName }}
+                    select={{this.selected}}
+                    onclick={{this.toggleCards}}> 
+                    {{@person.name}}
+                </button>
             {{/if}}
             <ButtonIcon 
-                class="icon-btn" 
-                {{on "mouseenter" this.showMenuOptions}}
+                class="icon-btn p-1 m-1" 
+                {{on "click" this.showMenuOptions}}
                 @icon="ellipsis-v"
             />
-        </PersonInput>
-        {{#if this.displayingMenuOptions}}
-            <div class="d-flex position-absolute justify-content-center align-items-center" style="left: 100%;">
-                <div class="arrow-left"></div>
-                <div class="d-flex flex-column menu">
-                    <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
-                    <MenuButton onclick={{this.displayModal}}>Delete</MenuButton>
-                    <MenuButton onclick={{this.addNewPeer}}>Add Peer</MenuButton>
-                    <MenuButton onclick={{this.addNewReporter}}>Add Direct Report</MenuButton>
-                    <MenuButton onclick={{this.addNewManager}}>Add Manager</MenuButton>
+            {{#if this.displayingMenuOptions}}
+                <div class="d-flex position-absolute justify-content-center align-items-center" style="left: 100%;">
+                    <div class="arrow-left"></div>
+                    <div class="d-flex flex-column menu">
+                        <MenuButton onclick={{this.toggleEditting}}>Edit</MenuButton>
+                        <MenuButton onclick={{this.displayModal}}>Delete</MenuButton>
+                        <MenuButton onclick={{this.addNewPeer}}>Add Peer</MenuButton>
+                        <MenuButton onclick={{this.addNewReporter}}>Add Direct Report</MenuButton>
+                        <MenuButton onclick={{this.addNewManager}}>Add Manager</MenuButton>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        {{#if this.displayingCards}}
+            <div class="d-flex flex-row align-items-center justify-content-center">
+                <div class="card p-1 m-1">
+                    <p>Card 1</p>
+                </div>
+                <div class="card p-1 m-1">
+                    <p>Card 2</p>
+                </div>
+                <div class="card p-1 m-1">
+                    <p>Card 3</p>
+                </div>
+                <div class="card p-1 m-1">
+                    <p>Card 4</p>
                 </div>
             </div>
         {{/if}}
     </div>
 </div>
+
 {{#if this.showModal}}
     {{#bs-modal title="Confirm Deletion"}}
         <div class="m-3 d-flex flex-row justify-content-between align-items-center border-bottom">

@@ -1,7 +1,7 @@
 $primary_color: #036475;
 $scaling_factor: 1;
 
-$node_gap: 1em; /* setting a size in em makes sure that the gap scales too with the scaling factor */
+$node_gap: 2em; /* setting a size in em makes sure that the gap scales too with the scaling factor */
 $sm_node_gap: $node_gap * 0.6;
 $lg_node_gap: $node_gap * 1.5;
 
@@ -28,6 +28,22 @@ $connector_style: solid;
     flex-wrap: wrap;
     align-items: center;
     padding: 0 $node_gap;
+
+    button {
+      width: max-content !important;
+      &:active {
+        outline: none !important;
+        box-shadow: none;
+      }
+      &:focus {
+        outline: none !important;
+        box-shadow: none;
+      }
+    }
+
+    // div {
+    //   width: max-content;
+    // }
 
     ul {
       margin: ($node_gap * 2) 0;
@@ -75,9 +91,9 @@ $connector_style: solid;
       position: absolute;
       display: block;
       height: $node_gap;
+      content: '';
       left: calc(50% - #{$connector_width / 2});
       top: calc(#{-$node_gap} - #{$connector_width / 2});
-      content: '';
       border-left: $connector_width $connector_style $primary_color;
       width: $connector_width;
     }
