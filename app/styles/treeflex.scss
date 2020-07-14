@@ -41,9 +41,14 @@ $connector_style: solid;
       }
     }
 
-    // div {
-    //   width: max-content;
-    // }
+    .connector-description {
+      position: absolute;
+      display: block;
+      top: calc(-1.5em);
+      width: 100%;
+      left: calc(50% + 10px);
+      color: $primary_color;
+    }
 
     ul {
       margin: ($node_gap * 2) 0;
