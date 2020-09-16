@@ -1,7 +1,6 @@
 # peer-list
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Ramp up project that allows users to create and view organization charts. Mock server built with Mirage, and client side developed with Ember.
 
 ## Prerequisites
 
